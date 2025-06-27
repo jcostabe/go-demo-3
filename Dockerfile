@@ -17,9 +17,10 @@ RUN adduser \
 
 WORKDIR /go/src/github.com/jcostabe/go-demo/
 
+COPY go.mod .
 COPY main.go .
 
-RUN go get -d -v
+RUN go mod tidy
 
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o /go/src/github.com/jcostabe/go-demo/main
 

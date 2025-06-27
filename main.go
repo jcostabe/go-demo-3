@@ -433,7 +433,12 @@ func main() {
 	cfg = model.DefaultConfiguration()
 
 	color.Blue.Println("Service: " + cfg.ServiceConfig.Name)
-	color.Green.Println("Version: " + cfg.ServiceConfig.Version)
+	if cfg.ServiceConfig.Version == "" {
+		color.Green.Println("Version: " + " 0.0.1-dev")
+	} else {
+		color.Green.Println("Version: " + cfg.ServiceConfig.Version)
+	}
+
 	color.Yellow.Println("Config profile: " + cfg.Environment)
 
 	initDb(cfg)
