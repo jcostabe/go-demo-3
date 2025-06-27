@@ -1,4 +1,4 @@
-FROM golang:1.15.3-alpine3.12 AS builder
+FROM golang:1.24.4-alpine3.22 AS builder
 
 RUN apk update \
      && apk add --no-cache git
@@ -32,4 +32,4 @@ COPY --from=builder /go/src/github.com/jcostabe/go-demo/main /go/src/github.com/
 
 USER gouser:gouser
 
-ENTRYPOINT [ "/go/src/github.com/jcostabe/go-demo/main" ]  
+ENTRYPOINT [ "/go/src/github.com/jcostabe/go-demo/main" ]
